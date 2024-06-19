@@ -1,1 +1,50 @@
-<p>register works!</p>
+<nb-card>
+    <nb-card-header>
+      Register
+    </nb-card-header>
+    <nb-card-body>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input nbInput id="name" formControlName="name" type="text" placeholder="Enter your name">
+          <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="error">
+            Name is required
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input nbInput id="email" formControlName="email" type="email" placeholder="Enter your email">
+          <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
+            Valid email is required
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Phone</label>
+            <input nbInput id="phone" formControlName="phone" type="phone" placeholder="Enter your phome number">
+            <div *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched" class="error">
+              Valid phone number is required
+            </div>
+          </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input nbInput id="password" formControlName="password" type="password" placeholder="Enter your password">
+          <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">
+            Password is required (minimum 6 characters)
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input nbInput id="address" formControlName="address" type="text" placeholder="Enter your address">
+          <div *ngIf="registerForm.get('address')?.invalid && registerForm.get('address')?.touched" class="error">
+            Address is required
+          </div>
+        </div>
+  
+        <button nbButton type="submit" status="primary" [disabled]="registerForm.invalid">Register</button>
+      </form>
+    </nb-card-body>
+  </nb-card>
+  
