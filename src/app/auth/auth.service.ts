@@ -10,10 +10,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  // login() {
-  //   return this.http.post(`${this.apiUrl}/login`);
-  // }
+  login(object: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, object);
+  }
   register(object: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`,object);
+    return this.http.post(`${this.apiUrl}/register`, object);
   }
 }
