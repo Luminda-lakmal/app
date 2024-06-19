@@ -1,0 +1,27 @@
+<nb-card>
+  <nb-card-header>
+    Login
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input nbInput id="email" formControlName="email" type="email" placeholder="Enter your email">
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
+          Valid email is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input nbInput id="password" formControlName="password" type="password" placeholder="Enter your password">
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+          Password is required (minimum 6 characters)
+        </div>
+      </div>
+
+      <button nbButton type="submit" status="primary" [disabled]="loginForm.invalid">Login</button>
+    </form>
+  </nb-card-body>
+</nb-card>
+

@@ -1,0 +1,64 @@
+/* Center the card within the viewport */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f5f7;
+}
+
+/* Style the card */
+nb-card {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #1f043b;
+}
+
+/* Style the form elements */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #e2d8d8;
+}
+
+input[nbInput] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.error {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+/* Style the login button with a blue color */
+button[nbButton] {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff; /* Blue color */
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button[nbButton]:disabled {
+  background-color: #007bff;
+  cursor: not-allowed;
+}
+nb-card-header{
+  color: #e2d8d8;
+  text-align: center;
+}
