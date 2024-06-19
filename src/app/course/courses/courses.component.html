@@ -1,1 +1,8 @@
-<p>courses works!</p>
+<button class="add-button" status="primary" (click)="openAddCourseDialog()">+Add Course</button>
+<br><br>
+<nb-card *ngFor = "let course of courses" accent="info">
+    <nb-card-header>{{course.title}}</nb-card-header>
+    <nb-card-body>
+      {{course.description}}
+    </nb-card-body>
+</nb-card>

@@ -4,9 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardBodyComponent, NbCardModule, NbDialogModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     NbEvaIconsModule,
     HttpClientModule,
     NbSidebarModule.forRoot(),
+    NbCardModule,
+    NbDialogModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseRoutingModule } from './course-routing.module';
+import { NbCardModule } from '@nebular/theme';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +15,9 @@ import { CourseRoutingModule } from './course-routing.module';
   ],
   imports: [
     CommonModule,
-    CourseRoutingModule
+    CourseRoutingModule,
+    NbCardModule,
+    FormsModule
   ]
 })
 export class CourseModule { }
