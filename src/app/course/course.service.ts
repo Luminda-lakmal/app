@@ -17,4 +17,13 @@ export class CourseService {
   createCourse(object: any): Observable<any>{
     return this.http.post(`${this.apiUrl}/course`,object);
   }
+  editCourse(id: number,object: any): Observable<any>{
+    return this.http.put(`${this.apiUrl}/course/${id}`,object);
+  }
+  getCourseById(id:number){
+    return this.http.get(`${this.apiUrl}/course/${id}`);
+  }
+  deleteCourseById(id:number){
+    return this.http.delete(`${this.apiUrl}/course/${id}`);
+  }
 }
