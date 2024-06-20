@@ -16,4 +16,24 @@ export class AuthService {
   register(object: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, object);
   }
+
+  getToken(): any {
+    return localStorage.getItem('token');
+  }
+
+  isAdmin(): boolean {
+    const token = this.getToken();
+    if (!token) return false;
+
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload && payload.role === 'admin';
+  }
+
+  saveToken(token: string) {
+    localStorage.setItem('token', token);
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+  }
 }

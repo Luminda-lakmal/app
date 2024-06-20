@@ -30,18 +30,17 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.loginForm.value).subscribe(
         response => {
           console.log('login successful', response);
-          // Navigate to a different page upon successful registration
-          this.router.navigate(['auth/login']);
+          localStorage.setItem('token', response.token);
+          sessionStorage.setItem('role',response.role);
+          this.router.navigate(['/course']);
         },
         error => {
           console.error('Login error', error);
-          // Handle the error, e.g., display an error message to the user
         }
       );
     }
     else {
       console.error('Form is invalid');
-      // Optionally, you can mark all fields as touched to show validation errors
       this.loginForm.markAllAsTouched();
     }
   }
