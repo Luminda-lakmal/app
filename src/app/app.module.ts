@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,11 +11,13 @@ import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DatePipe } from '@angular/common';
 import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { HomeComponent } from './home/home.component';
     NbMenuModule.forRoot(),
     NbIconModule,
     NbListModule,
-    NbAlertModule
+    NbAlertModule,
+    CommonModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

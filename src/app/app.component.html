@@ -2,23 +2,26 @@
 
   <nb-layout-header fixed>
     <div class="header-content">
-      <div class="title">Science Education Academy</div>
+      <nb-icon icon="book-outline"></nb-icon>
+      <span class="title">Science Education Academy</span>
       <div class="auth-buttons">
-        <button nbButton status="primary" (click)="navigateTo('login')">Login</button>
-        <button nbButton status="success" (click)="navigateTo('register')">Register</button>
+        <button *ngIf="hide" nbButton status="primary" (click)="navigateTo('login')">Login</button>
+        <button *ngIf="hide" nbButton status="success" (click)="navigateTo('register')">Register</button>
+        <button *ngIf="!hide" nbButton status="success" (click)="navigateTo('logout')">Logout</button>
       </div>
+
     </div>
   </nb-layout-header>
 
   <nb-layout-column>
     <router-outlet></router-outlet>
-    
   </nb-layout-column>
 
   <nb-layout-footer fixed>
-  <!-- Insert footer here -->
+    <app-footer></app-footer>
   </nb-layout-footer>
-<nb-sidebar tag="menu-sidebar" state="expanded">
-  <app-sidebar></app-sidebar>
-</nb-sidebar>
+  <nb-sidebar tag="menu-sidebar" state="expanded">
+    <app-sidebar></app-sidebar>
+  </nb-sidebar>
+
 </nb-layout>
