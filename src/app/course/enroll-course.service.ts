@@ -13,4 +13,10 @@ export class EnrollCourseService {
   createEnroll(object:any): Observable<any>{
     return this.http.post(`${this.apiUrl}`,object);
   }
+  getEnrollmentsByStudentId(id: any){
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
+  deleteEnrollmentById(id: any){
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
 }

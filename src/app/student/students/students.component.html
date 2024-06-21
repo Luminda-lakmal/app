@@ -10,6 +10,7 @@
         <th>Email</th>
         <th>Address</th>
         <th>Phone</th>
+        <th>Enrollments</th>
         <th></th>
         <th></th>
       </tr>
@@ -21,6 +22,7 @@
         <td>{{ user.email }}</td>
         <td>{{ user.address }}</td>
         <td>{{ user.phone }}</td>
+        <td><button (click)="viewAEnrollments(user.id)">View</button></td>
         <td><button (click)="openEditStudentDialog(user.id)">Edit</button></td>
         <td><button (click)="deleteCourse(user.id)">Delete</button></td>
       </tr>
