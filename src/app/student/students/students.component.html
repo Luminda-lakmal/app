@@ -1,0 +1,28 @@
+<h1>Students</h1>
+<button (click)="openAddStudentDialog()">+Add Students</button>
+<br>
+<br>
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.phone }}</td>
+        <td><button (click)="openEditStudentDialog(user.id)">Edit</button></td>
+        <td><button (click)="deleteCourse(user.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>

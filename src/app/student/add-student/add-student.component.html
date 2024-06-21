@@ -1,0 +1,31 @@
+<nb-card>
+    <nb-card-header>{{pageTitle}}</nb-card-header>
+    <nb-card-body>
+        <form #form="ngForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input nbInput fullWidth id="name" name="name" [(ngModel)]="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input nbInput fullWidth id="email" name="email" [(ngModel)]="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input nbInput fullWidth id="password" name="password" [(ngModel)]="password" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input nbInput fullWidth id="address" name="address" [(ngModel)]="address" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input nbInput fullWidth id="phone" name="phone" [(ngModel)]="phone" required>
+            </div>
+        </form>
+    </nb-card-body>
+    <nb-card-footer>
+        <button nbButton status="primary" (click)="submit()">Submit</button>
+        <button nbButton status="danger" (click)="close()">Cancel</button>
+    </nb-card-footer>
+</nb-card>
