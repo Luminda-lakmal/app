@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentsService } from '../students.service';
 import { NbDialogService } from '@nebular/theme';
 import { AddStudentComponent } from '../add-student/add-student.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-students',
@@ -15,6 +16,7 @@ export class StudentsComponent implements OnInit {
   constructor(
     private studentsService: StudentsService,
     private dialogService: NbDialogService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -46,5 +48,9 @@ export class StudentsComponent implements OnInit {
         console.error('Deleted error', error);
       }
     )
+  }
+  viewAEnrollments(id: any){
+    sessionStorage.setItem("studentId", id);
+    this.router.navigate(['enroll']);
   }
 }

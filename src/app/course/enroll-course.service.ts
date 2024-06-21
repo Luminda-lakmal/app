@@ -6,24 +6,17 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class CourseService {
-  private apiUrl = `${environment.backendUrl}/api/course`;
+export class EnrollCourseService {
+  private apiUrl = `${environment.backendUrl}/api/enrollment`;
   constructor(private http: HttpClient) { }
 
-  getAllCourses(){
-    return this.http.get(`${this.apiUrl}`);
-  }
-
-  createCourse(object: any): Observable<any>{
+  createEnroll(object:any): Observable<any>{
     return this.http.post(`${this.apiUrl}`,object);
   }
-  editCourse(id: number,object: any): Observable<any>{
-    return this.http.put(`${this.apiUrl}/${id}`,object);
-  }
-  getCourseById(id:number){
+  getEnrollmentsByStudentId(id: any){
     return this.http.get(`${this.apiUrl}/${id}`);
   }
-  deleteCourseById(id:number){
+  deleteEnrollmentById(id: any){
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

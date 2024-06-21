@@ -1,0 +1,24 @@
+<h1>Students</h1>
+<!-- <button (click)="openAddStudentDialog()">+Add Students</button> -->
+<br>
+<br>
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Student</th>
+        <th>Course</th>
+        <th>Enrolled date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of enrollments">
+        <td>{{ e.id }}</td>
+        <td>{{ e.student_id }}</td>
+        <td>{{ e.course_id }}</td>
+        <td>{{e.createdAt}}</td>
+        <td><button (click)="deleteEnrollment(e.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
