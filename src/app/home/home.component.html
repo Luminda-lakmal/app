@@ -1,0 +1,17 @@
+<div class="welcome-banner">
+    <h1>Welcome to Science Education Academy</h1>
+    <p>Learn, Explore, and Grow with our extensive course library.</p>
+</div>
+
+<div class="course-section">
+    <h2>Featured Courses</h2>
+    <div *ngFor="let course of courses">
+        <nb-card>
+            <nb-card-header>{{course.title}}</nb-card-header>
+            <nb-card-body>
+                <p>{{course.description}}</p>
+            </nb-card-body>
+        </nb-card>
+    </div>
+
+</div>
