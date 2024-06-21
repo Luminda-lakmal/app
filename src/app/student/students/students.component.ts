@@ -51,6 +51,6 @@ export class StudentsComponent implements OnInit {
   }
   viewAEnrollments(id: any){
     sessionStorage.setItem("studentId", id);
-    this.router.navigate(['enroll']);
+    this.router.navigate(['enroll/studentenrollments']);
   }
 }
