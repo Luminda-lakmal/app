@@ -7,23 +7,23 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class CourseService {
-  private apiUrl = `${environment.backendUrl}/api`;
+  private apiUrl = `${environment.backendUrl}/api/course`;
   constructor(private http: HttpClient) { }
 
   getAllCourses(){
-    return this.http.get(`${this.apiUrl}/course`);
+    return this.http.get(`${this.apiUrl}`);
   }
 
   createCourse(object: any): Observable<any>{
-    return this.http.post(`${this.apiUrl}/course`,object);
+    return this.http.post(`${this.apiUrl}`,object);
   }
   editCourse(id: number,object: any): Observable<any>{
-    return this.http.put(`${this.apiUrl}/course/${id}`,object);
+    return this.http.put(`${this.apiUrl}/${id}`,object);
   }
   getCourseById(id:number){
-    return this.http.get(`${this.apiUrl}/course/${id}`);
+    return this.http.get(`${this.apiUrl}/${id}`);
   }
   deleteCourseById(id:number){
-    return this.http.delete(`${this.apiUrl}/course/${id}`);
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
