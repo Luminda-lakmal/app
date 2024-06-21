@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { EnrollCourseService } from 'src/app/course/enroll-course.service';
 
 @Component({
-  selector: 'app-enrollments',
-  templateUrl: './enrollments.component.html',
-  styleUrls: ['./enrollments.component.scss']
+  selector: 'app-allenrollments',
+  templateUrl: './allenrollments.component.html',
+  styleUrls: ['./allenrollments.component.scss']
 })
-export class EnrollmentsComponent implements OnInit {
+export class AllenrollmentsComponent implements OnInit {
   enrollments:any = [];
   constructor(
     private enrollService: EnrollCourseService,
@@ -15,8 +15,7 @@ export class EnrollmentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const studentId = sessionStorage.getItem("studentId");
-    this.enrollService.getEnrollmentsByStudentId(studentId).subscribe(
+    this.enrollService.getAllEnrollments().subscribe(
       response => {
         this.enrollments = response;
         this.enrollments = this.enrollments.map((enrollment: { createdAt: string | number | Date; }) => ({
@@ -24,11 +23,13 @@ export class EnrollmentsComponent implements OnInit {
           createdAt: this.datePipe.transform(enrollment.createdAt, 'MMMM d, y, h:mm a')
         }));
         console.log(response);
+        console.log(response);
       },
       error => {
         console.error('Creation error', error);
       }
     )
+
   }
   deleteEnrollment(id:any){
     this.enrollService.deleteEnrollmentById(id).subscribe(

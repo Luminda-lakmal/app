@@ -13,4 +13,8 @@ export class AppComponent {
   navigateTo(path: string) {
     this.router.navigate([`/auth/${path}`]);
   }
+  navStudents(){
+    this.router.navigate([`/students`]);
+
+  }
 }

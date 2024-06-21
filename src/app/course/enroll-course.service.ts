@@ -19,4 +19,7 @@ export class EnrollCourseService {
   deleteEnrollmentById(id: any){
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
+  getAllEnrollments(){
+    return this.http.get(`${this.apiUrl}`);
+  }
 }
