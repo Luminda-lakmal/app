@@ -16,7 +16,7 @@ export class AuthService {
   register(object: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, object);
   }
-  private hasToken(): boolean {
+  hasToken(): boolean {
     return !!localStorage.getItem('token');
   }
 

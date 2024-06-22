@@ -4,6 +4,7 @@ import { NbDialogService } from '@nebular/theme';
 import { AddCourseComponent } from '../add-course/add-course.component';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EnrollCourseService } from '../enroll-course.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -18,14 +19,15 @@ export class CoursesComponent implements OnInit {
     private courseService: CourseService,
     private dialogService: NbDialogService,
     private authService: AuthService,
-    private enrollService: EnrollCourseService
+    private enrollService: EnrollCourseService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.isAdmin = this.authService.isAdmin();
-    this.authService.isLoggedIn.subscribe(status => {
-      this.isLoggedIn = status;
-    });
+    if(this.authService.hasToken()){
+      this.isLoggedIn = true; 
+    }
     this.courseService.getAllCourses().subscribe(
       response => {
         this.courses = response;
@@ -51,7 +53,7 @@ export class CoursesComponent implements OnInit {
     this.enrollService.createEnroll(enrollObject).subscribe(
       response => {
         console.log('Enroll created successfully', response);
-        window.location.reload();
+        this.router.navigate(['enroll']);
       },
       error => {
         console.error('Creation error', error);
