@@ -13,6 +13,7 @@ import { EnrollCourseService } from '../enroll-course.service';
 export class CoursesComponent implements OnInit {
   courses: any = [];
   isAdmin: boolean = false;
+  isLoggedIn: boolean = false;
   constructor(
     private courseService: CourseService,
     private dialogService: NbDialogService,
@@ -22,6 +23,9 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAdmin = this.authService.isAdmin();
+    this.authService.isLoggedIn.subscribe(status => {
+      this.isLoggedIn = status;
+    });
     this.courseService.getAllCourses().subscribe(
       response => {
         this.courses = response;

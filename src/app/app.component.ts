@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
     if(path == 'logout'){
       localStorage.removeItem('token');
       this.router.navigate([``]);
+      window.location.reload();
     }
     else{
       this.router.navigate([`/auth/${path}`]);

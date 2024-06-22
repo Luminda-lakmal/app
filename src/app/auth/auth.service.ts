@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private apiUrl = `${environment.backendUrl}/api`;
-
+  private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
   constructor(private http: HttpClient) { }
 
   login(object: any): Observable<any> {
@@ -15,6 +15,9 @@ export class AuthService {
   }
   register(object: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, object);
+  }
+  private hasToken(): boolean {
+    return !!localStorage.getItem('token');
   }
 
   getToken(): any {
@@ -35,5 +38,8 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+  }
+  get isLoggedIn(): Observable<boolean> {
+    return this.loggedIn.asObservable();
   }
 }
