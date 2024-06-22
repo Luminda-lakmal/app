@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { EnrollCourseService } from 'src/app/course/enroll-course.service';
+import { NbToastrService } from '@nebular/theme';
 
 @Component({
   selector: 'app-enrollments',
@@ -11,7 +12,8 @@ export class EnrollmentsComponent implements OnInit {
   enrollments:any = [];
   constructor(
     private enrollService: EnrollCourseService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private toastrService: NbToastrService
   ) { }
 
   ngOnInit(): void {
@@ -34,10 +36,12 @@ export class EnrollmentsComponent implements OnInit {
     this.enrollService.deleteEnrollmentById(id).subscribe(
       response => {
         console.log(response);
+        this.toastrService.show('enrollment deleted successfully', 'Success', { status: 'success'});
         window.location.reload();
       },
       error => {
         console.error('Creation error', error);
+        this.toastrService.show('Cant delete', 'Error', { status: 'danger'});
       }
     )
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogRef } from '@nebular/theme';
+import { NbDialogRef, NbToastrService } from '@nebular/theme';
 import { CourseService } from '../course.service';
 
 @Component({
@@ -15,7 +15,8 @@ export class AddCourseComponent implements OnInit {
   pageTitle: string = "Add";
   constructor(
     protected ref: NbDialogRef<AddCourseComponent>,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private toastrService: NbToastrService
   ) {}
 
   ngOnInit(): void {
@@ -49,8 +50,10 @@ export class AddCourseComponent implements OnInit {
             this.title = "";
             this.description = "";
             window.location.reload();
+            this.toastrService.show('Course updated successfully', 'Success', { status: 'success'});
           },
           error => {
+            this.toastrService.show('Cant updated', 'Error', { status: 'danger'});
             console.error('Update error', error);
           }
         );
@@ -59,10 +62,12 @@ export class AddCourseComponent implements OnInit {
         this.courseService.createCourse(courseData).subscribe(
           response => {
             console.log('Course created successfully', response);
-            window.location.reload();
+            this.toastrService.show("Course created successfully", 'Success', { status: 'success' });
+            // window.location.reload();
           },
           error => {
             console.error('Creation error', error);
+            this.toastrService.show('Cant create', 'Error', { status: 'danger'});
           }
         );
       }

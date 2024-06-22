@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../course.service';
-import { NbDialogService } from '@nebular/theme';
+import { NbDialogService, NbToastrService } from '@nebular/theme';
 import { AddCourseComponent } from '../add-course/add-course.component';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EnrollCourseService } from '../enroll-course.service';
@@ -20,7 +20,8 @@ export class CoursesComponent implements OnInit {
     private dialogService: NbDialogService,
     private authService: AuthService,
     private enrollService: EnrollCourseService,
-    private router: Router
+    private router: Router,
+    private toastrService: NbToastrService
   ) { }
 
   ngOnInit(): void {
@@ -53,20 +54,24 @@ export class CoursesComponent implements OnInit {
     this.enrollService.createEnroll(enrollObject).subscribe(
       response => {
         console.log('Enroll created successfully', response);
+        this.toastrService.show('Enrollment added successfully', 'Success', { status: 'success'});
         this.router.navigate(['enroll']);
       },
       error => {
         console.error('Creation error', error);
+        this.toastrService.show('Cant create', 'Error', { status: 'danger'});
       });
   }
   deleteCourse(id: any) {
     this.courseService.deleteCourseById(id).subscribe(
       response => {
         console.log('Course deleted successfully', response);
+        this.toastrService.show('Course deleted successfully', 'Success', { status: 'success'});
         window.location.reload();
       },
       error => {
         console.error('Deleted error', error);
+        this.toastrService.show('Cant deleted', 'Error', { status: 'danger'});
       }
     )
   }
