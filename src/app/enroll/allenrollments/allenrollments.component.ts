@@ -11,6 +11,7 @@ import { EnrollCourseService } from 'src/app/course/enroll-course.service';
 export class AllenrollmentsComponent implements OnInit {
   enrollments: any = [];
   isAdmin: boolean = false;
+  isLoggedIn: boolean = false;
   constructor(
     private enrollService: EnrollCourseService,
     private datePipe: DatePipe,
@@ -18,6 +19,9 @@ export class AllenrollmentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if(this.authService.hasToken()){
+      this.isLoggedIn = true; 
+    }
     this.isAdmin = this.authService.isAdmin();
     const id = sessionStorage.getItem("userId");
     if (this.isAdmin) {
@@ -36,7 +40,7 @@ export class AllenrollmentsComponent implements OnInit {
         }
       )
     }
-    else {
+    else if (!this.isAdmin && this.isLoggedIn) {
       this.enrollService.getEnrollmentsByStudentId(id).subscribe(
         response => {
           this.enrollments = response;
