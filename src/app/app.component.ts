@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,12 +6,26 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
-  constructor(private router: Router) {}
+  hide: boolean = true;
+  constructor(private router: Router) {
 
+  }
+  ngOnInit(): void {
+    if(localStorage.getItem('token')){
+      this.hide = false;
+    }
+  }
   navigateTo(path: string) {
-    this.router.navigate([`/auth/${path}`]);
+    if(path == 'logout'){
+      localStorage.removeItem('token');
+      this.router.navigate([``]);
+      window.location.reload();
+    }
+    else{
+      this.router.navigate([`/auth/${path}`]);
+    }
   }
   navStudents(){
     this.router.navigate([`/students`]);

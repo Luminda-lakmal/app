@@ -11,7 +11,7 @@
   </nb-card-header>
   <nb-card-body>
     {{course.description}}
-    <button *ngIf="!isAdmin" class="edit-button" status="primary" (click)="enrollCourse(course.id)">
+    <button *ngIf="!isAdmin && isLoggedIn" class="edit-button" status="primary" (click)="enrollCourse(course.id)">
       Enroll
     </button>
   </nb-card-body>
