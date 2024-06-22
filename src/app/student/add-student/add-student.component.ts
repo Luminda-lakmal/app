@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentsService } from '../students.service';
-import { NbDialogRef } from '@nebular/theme';
+import { NbDialogRef, NbToastrService } from '@nebular/theme';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -19,6 +19,7 @@ export class AddStudentComponent implements OnInit {
     protected ref: NbDialogRef<AddStudentComponent>,
     private authService: AuthService,
     private studentService: StudentsService,
+    private toastrService: NbToastrService
   ) { }
 
   ngOnInit(): void {
@@ -47,21 +48,23 @@ export class AddStudentComponent implements OnInit {
     if (sessionStorage.getItem('studentId')) {
       this.studentService.editStudent(studentId,studentData).subscribe(response => {
         console.log('student edited successfully', response);
+        this.toastrService.show('Student updated successfully', 'Success', { status: 'success'});
         window.location.reload();
       },
         error => {
           console.error('student edit error', error);
-
+          this.toastrService.show('student edit error', 'Error', { status: 'danger' });
         });
     }
     else {
       this.authService.register(studentData).subscribe(response => {
         console.log('student creation successful', response);
+        this.toastrService.show('Student created successfully', 'Success', { status: 'success'});
         window.location.reload();
       },
         error => {
           console.error('student creation error', error);
-
+          this.toastrService.show('Cant add student', 'Error', { status: 'danger'});
         });
     }
   }
