@@ -1,3 +1,8 @@
+After cloning inside the project you have to run on cmd
+npm i 
+then run
+ng serve
+
 # App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.18.
