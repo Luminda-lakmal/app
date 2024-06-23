@@ -1,7 +1,7 @@
 After cloning inside the project you have to run on cmd
-npm i 
+# npm i 
 then run
-ng serve
+# ng serve
 
 # App
 
